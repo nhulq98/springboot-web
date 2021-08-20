@@ -9,6 +9,7 @@ import com.laptrinhjavaweb.entity.UserEntity;
 import com.laptrinhjavaweb.exception.MyException;
 import com.laptrinhjavaweb.repository.RoleRepository;
 import com.laptrinhjavaweb.repository.UserRepository;
+import com.laptrinhjavaweb.repository.jdbc.impl.UserJDBCImpl;
 import com.laptrinhjavaweb.service.IUserService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -151,5 +152,23 @@ public class UserService implements IUserService {
             userEntity.setStatus(0);
             userRepository.save(userEntity);
         }
+    }
+
+    @Override
+    public List<UserDTO> getStaffs() {
+        List<UserDTO> result = new ArrayList<>();
+        UserJDBCImpl userJDBC = new UserJDBCImpl();
+        List<UserEntity> entities = userJDBC.getStaffs();
+        for(UserEntity userEntity: entities){
+            UserDTO userDTO = userConverter.convertToDto(userEntity);
+            result.add(userDTO);
+        }
+//        List<UserEntity> entities = userRepository.getStaffs();
+//        for(UserEntity entity: entities){
+//            UserDTO dto = userConverter.convertToDto(entity);
+//            result.add(dto);
+//        }
+
+        return result;
     }
 }
