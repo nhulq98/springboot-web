@@ -14,7 +14,7 @@
 	</parent>
 
 	<properties>
-		<mysql.version>8.0.16</mysql.version>
+		<mysql.version>8.0.28</mysql.version>
 		<sitemesh.version>2.4.2</sitemesh.version>
 		<displaytag.version>1.2</displaytag.version>
 		<java.version>1.8</java.version>
